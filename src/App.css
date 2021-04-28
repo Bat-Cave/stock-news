@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+::root{
+  --primary-color: ;
+  --secondary-color: ;
+  --accent-color: ;
+  --background-color: ;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+body{
+  width: 100vw;
+  height: 100vh;
+  padding: 32px 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*    tabs styling     */
+
+.tabs-container{
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  background: white;
+}
+
+.tab{
+  width: 150px;
+  height: 40px;
+  margin: 0 8px 0 0;
+  border: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 5px 5px 0 0;
+  padding: 0;
+  background: white;
+  z-index: 1;
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.film{
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 3px 3px 0 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.active{
+  border-bottom: 2px solid white;
+}
+
+/*    news styling     */
+
+.news-container{
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  border: 2px solid black;
+  border-radius: 0 5px 5px 5px;
+  transform: translateY(-2px);
+  z-index: 100;
+  padding: 8px;
 }
