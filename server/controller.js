@@ -1,15 +1,26 @@
 require('dotenv').config();
+let googleNewsAPI = require("google-news-json");
+const googleTrends = require('google-trends-api');
 
 module.exports = {
-    getMe: async (req, res) => {
-      if(req.session.user){
-        const {user_id} = req.session.user;
-        const db = req.app.get('db');
-        const userInfo = await db.get_me(user_id);
-        delete userInfo[0].password;
-        res.status(200).send(userInfo[0]);
-      } else {
-        res.status(401).send('User not found');
-      }
+    getGoogleNews: async (req, res) => {
+        let news;
+
+        if(req.params.search != 'no-search-here' && req.params.search != ''){
+            news = await googleNewsAPI.getNews(googleNewsAPI.SEARCH, req.params.search, "en-GB");
+        } else {
+            news = await googleNewsAPI.getNews(googleNewsAPI.TOP_NEWS, null, "en-GB");
+        }
+
+        res.status(200).send(news);
+    },
+    getGoogleTrends: async (req, res) => {
+        await googleTrends.realTimeTrends({ geo: 'US', category: 'b' })
+        .then(function(results){
+          res.status(200).send(results);
+        })
+        .catch(function(err){
+          console.error('Oh no there was an error', err);
+        });
     }
   }

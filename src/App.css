@@ -4,11 +4,12 @@
   box-sizing: border-box;
 }
 
-::root{
-  --primary-color: ;
-  --secondary-color: ;
-  --accent-color: ;
-  --background-color: ;
+:root{
+  --primary-color: #2a9d8f;
+  --second-color: #e76f51;
+  --third-color: #f4a261;
+  --accent-color: #e9c46a;
+  --background-color: #264653;
 }
 
 
@@ -16,6 +17,12 @@ body{
   width: 100vw;
   height: 100vh;
   padding: 32px 10%;
+  background: var(--background-color);
+  overflow-x: hidden;
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }
 
 /*    tabs styling     */
@@ -23,7 +30,7 @@ body{
 .tabs-container{
   display: flex;
   width: 100%;
-  background: white;
+  background: transparent;
 }
 
 .tab{
@@ -32,7 +39,7 @@ body{
   margin: 0 8px 0 0;
   border: 2px solid black;
   border-bottom: 2px solid black;
-  border-radius: 5px 5px 0 0;
+  border-radius: 5px;
   padding: 0;
   background: white;
   z-index: 1;
@@ -42,8 +49,7 @@ body{
   justify-content: center;
 }
 
-
-.film{
+.film {
   position: absolute;
   left: 0;
   top: 0;
@@ -53,19 +59,71 @@ body{
   z-index: 1000;
 }
 
-.active{
-  border-bottom: 2px solid white;
-}
-
 /*    news styling     */
 
 .news-container{
   width: 100%;
   height: auto;
   min-height: 500px;
-  border: 2px solid black;
-  border-radius: 0 5px 5px 5px;
-  transform: translateY(-2px);
   z-index: 100;
   padding: 8px;
 }
+
+.news-story{
+  width: 100%;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  color: white;
+  border-bottom: 1px solid var(--third-color);
+  padding: 8px 0;
+}
+
+.news-story .source{
+  color: var(--second-color);
+  font-size: 12px;
+  text-transform: capitalize;
+  margin-right: 8px;
+  width: 150px;
+}
+.news-story .title{
+  width: calc(100% - 400px);
+}
+.news-story .date{
+  width: 250px;
+}
+
+.search-container{
+  display: flex;
+  align-items: center;
+  height: 50px;
+
+}
+
+.search{
+  width: 50%;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid var(--second-color);
+  border-radius: 5px 5px 0 0;
+  padding: 0 8px;
+  background: transparent;
+  color: var(--second-color);
+}
+
+button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+button svg{
+  width: 50px;
+  height: 50px;
+  color: var(--second-color)
+}
+
+input:active, input:focus{
+  outline: none;
+}
+
+

@@ -1,21 +1,17 @@
-// import React, { useState } from 'react';
+import {updateActiveTab} from '../dux/reducer';
+import {connect} from 'react-redux';
 
 const Tabs = (props) => {
 
-    let makeActive = e => {
-        e.preventDefault();
-        let tabs = document.getElementsByClassName("tab");
-        for(let i = 0; i < tabs.length; i++){
-            tabs[i].classList.remove('active');
-        }
-        e.target.parentElement.classList.add('active');
-    }
-
     let tabsRendered = props.tabs.map((e, i) =>{
+        let search = e;
         return(
             <div key={i} className='tab'>
-                <p>{e}</p>
-                <div className='film' onClick={(e) => makeActive(e)}></div>
+                <p>{search}</p>
+                <div className='film' onClick={() => {
+                    props.updateActiveTab(search);
+                }}>
+                </div>
             </div>
         )
     })
@@ -27,4 +23,8 @@ const Tabs = (props) => {
     )
 }
 
-export default Tabs
+function mapStateToProps(state) {
+    return state;
+  }
+  
+export default connect(mapStateToProps, {updateActiveTab})(Tabs);

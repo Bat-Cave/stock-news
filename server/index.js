@@ -1,5 +1,4 @@
- 
-require('dotenv').config();
+ require('dotenv').config();
 const express = require('express'),
       cors = require('cors'),
       session = require('express-session'),
@@ -20,11 +19,10 @@ app.use(session({
 }))
 
 
-// let googleNewsAPI = require("google-news-json");
-// let news = await googleNewsAPI.getNews(googleNewsAPI.TOP_NEWS, null, "en-GB");
 
 
-app.get('/api/me', ctrl.getMe)
+app.get('/api/googlenews/:search', ctrl.getGoogleNews)
+app.get('/api/googletrends', ctrl.getGoogleTrends)
 
 app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));
